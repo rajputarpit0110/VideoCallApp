@@ -1,6 +1,8 @@
 {
   "scripts": {
-    "dev": "cd VideoCallApp && npm run dev"
+    "dev": "npm run --prefix VideoCallApp dev",
+    "build": "npm install --prefix VideoCallApp && npm run --prefix VideoCallApp build",
+    "preview": "npm run --prefix VideoCallApp preview"
   },
   "dependencies": {
     "@zegocloud/zego-uikit-prebuilt": "^2.17.3",
