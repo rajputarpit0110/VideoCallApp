@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "dev": "cd VideoCallApp && npm run dev"
+  },
+  "dependencies": {
+    "@zegocloud/zego-uikit-prebuilt": "^2.17.3",
+    "react-router-dom": "^7.14.2"
+  }
+}
