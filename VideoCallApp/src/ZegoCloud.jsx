@@ -24,7 +24,7 @@ export default function ZegoCloud(){
             {/* Background Image with Overlay */}
             <div className="absolute inset-0 z-0">
                 <img src={bgImage} alt="Background" className="w-full h-full object-cover opacity-40 mix-blend-screen scale-105 animate-pulse" style={{ animationDuration: '20s' }} />
-                <div className="absolute inset-0 bg-linear-to-br from-slate-950/80 via-slate-900/60 to-indigo-950/80 backdrop-blur-[2px]"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-slate-900/60 to-indigo-950/80 backdrop-blur-[2px]"></div>
             </div>
 
             {/* Navbar */}
@@ -33,11 +33,11 @@ export default function ZegoCloud(){
                     <div className="p-2 bg-indigo-500/20 rounded-xl group-hover:bg-indigo-500/30 transition-colors">
                         <Video className="w-6 h-6 text-indigo-400" />
                     </div>
-                    <span className="text-xl font-bold bg-clip-text text-transparent bg-linear-to-r from-white to-white/70">Lumina<span className="text-indigo-400">Meet</span></span>
+                    <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/70">Lumina<span className="text-indigo-400">Meet</span></span>
                 </div>
                 
                 <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center">
-                    <span className="text-lg font-medium tracking-wide text-transparent bg-clip-text bg-linear-to-r from-indigo-300 to-purple-300">Arpit Rajput</span>
+                    <span className="text-lg font-medium tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-indigo-300 to-purple-300">Arpit Rajput</span>
                 </div>
                 
                 <div className="hidden md:block w-24"></div> {/* Spacer for flex balance */}
@@ -55,7 +55,7 @@ export default function ZegoCloud(){
                     
                     <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]">
                         Connect <br/>
-                        <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-400 via-purple-400 to-pink-400">Instantly, Anywhere</span>
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">Instantly, Anywhere</span>
                     </h1>
                     
                     <p className="text-lg text-slate-400 max-w-xl leading-relaxed">
@@ -94,7 +94,7 @@ export default function ZegoCloud(){
 
                 {/* Right Visual / Decorative */}
                 <div className="flex-1 w-full max-w-lg lg:max-w-none relative z-10 perspective-1000">
-                    <div className="relative w-full aspect-video rounded-2xl bg-linear-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-xl shadow-2xl p-2 transform rotate-y-[-10deg] rotate-x-[5deg] hover:rotate-y-0 hover:rotate-x-0 transition-transform duration-700 ease-out">
+                    <div className="relative w-full aspect-video rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-xl shadow-2xl p-2 transform -rotate-3 transition-transform duration-700 ease-out hover:rotate-0">
                         {/* Fake UI Header */}
                         <div className="flex items-center justify-between mb-4 px-2">
                             <div className="flex gap-1.5">

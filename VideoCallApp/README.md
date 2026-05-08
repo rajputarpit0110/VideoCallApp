@@ -1,16 +1,43 @@
-# React + Vite
+# VideoCallApp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React + Vite video call project using Zego Cloud and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+VideoCallApp is designed for Vercel deployment with server-side token generation and secure environment handling.
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Copy `.env.example` to `.env.local`
+2. Add your Zego values
+3. Run:
 
-## Expanding the ESLint configuration
+```bash
+cd VideoCallApp
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Vercel Deployment
+
+Set the project root to `VideoCallApp` in Vercel.
+
+Add these environment variables in Vercel:
+
+- `ZEGO_APP_ID`
+- `ZEGO_SERVER_SECRET`
+
+The app uses `/api/token` to generate Zego kit tokens securely on the server side.
+
+## Build
+
+```bash
+cd VideoCallApp
+npm run build
+```
+
+## Notes
+
+- Do not commit the actual `ZEGO_SERVER_SECRET`
+- Use `.env.local` for local development only
+- The `/api/token` route keeps the secret off the client

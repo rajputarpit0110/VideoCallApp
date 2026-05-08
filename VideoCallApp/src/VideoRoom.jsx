@@ -10,16 +10,37 @@ export default function VideoRoom() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (containerRef.current) {
-            // generate Kit Token
-            const appID = 1787614081;
-            const serverSecret = "860df98dc04b441604b4db81046d73dc";
-            const kitToken = ZegoUIKitPrebuilt.generateKitTokenForTest(appID, serverSecret, id, Date.now().toString(), "JohnSnow");
+        const setupRoom = async () => {
+            if (!containerRef.current || !id) return;
 
-            // Create instance object from Kit Token.
-            const zp = ZegoUIKitPrebuilt.create(kitToken);
+            const userID = typeof crypto?.randomUUID === 'function' ? crypto.randomUUID() : Date.now().toString();
+            const userName = `Guest-${userID.slice(-4)}`;
 
-            // start the call
+            let tokenResponse;
+            if (import.meta.env.DEV && import.meta.env.VITE_ZEGO_SERVER_SECRET) {
+                tokenResponse = {
+                    token: ZegoUIKitPrebuilt.generateKitTokenForTest(
+                        Number(import.meta.env.VITE_ZEGO_APP_ID || 1787614081),
+                        import.meta.env.VITE_ZEGO_SERVER_SECRET,
+                        id,
+                        userID,
+                        userName,
+                    ),
+                };
+            } else {
+                const response = await fetch(
+                    `/api/token?roomID=${encodeURIComponent(id)}&userID=${encodeURIComponent(userID)}&userName=${encodeURIComponent(userName)}`,
+                );
+                tokenResponse = await response.json();
+
+                if (!response.ok || !tokenResponse.token) {
+                    console.error('Failed to fetch kit token', tokenResponse);
+                    return;
+                }
+            }
+
+            const zp = ZegoUIKitPrebuilt.create(tokenResponse.token);
+
             zp.joinRoom({
                 container: containerRef.current,
                 sharedLinks: [
@@ -33,10 +54,12 @@ export default function VideoRoom() {
                     },
                 ],
                 scenario: {
-                    mode: ZegoUIKitPrebuilt.OneONoneCall, // To implement 1-on-1 calls, modify the parameter here to [ZegoUIKitPrebuilt.OneONoneCall].
+                    mode: ZegoUIKitPrebuilt.OneONoneCall,
                 },
             });
-        }
+        };
+
+        setupRoom();
     }, [id]);
 
     return (
